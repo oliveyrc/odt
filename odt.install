@@ -1,0 +1,40 @@
+<?php
+
+declare(strict_types=1);
+
+use Drupal\Core\Url;
+use Drupal\node\Entity\Node;
+
+
+/**
+ * Implements hook_install().
+ *
+ * - Create the standard/required basic pages for all sites.
+ * - Uninstall non required modules.
+ */
+function odt_development_tools_install() {
+  $dev_modules = ['devel', 'devel_generate', 'stage_file_proxy', 'update', 'upgrade_status'];
+
+  $moduleHandler = \Drupal::service('module_handler');
+  foreach($dev_modules as $module) {
+    if (!$moduleHandler->moduleExists($module)) {
+      \Drupal::service('module_installer')->install([$module]);
+    }
+  }
+}
+
+/**
+ * Implements hook_uninstall().
+ *
+ * - Delete
+ */
+function odt_development_tools_uninstall($is_syncing) {
+  $dev_modules = ['devel', 'devel_generate', 'stage_file_proxy', 'update', 'upgrade_status'];
+
+  $moduleHandler = \Drupal::service('module_handler');
+  foreach(array_reverse($dev_modules) as $module) {
+    if ($moduleHandler->moduleExists($module)) {
+      \Drupal::service('module_installer')->uninstall([$module]);
+    }
+  }
+}

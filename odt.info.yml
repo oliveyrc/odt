@@ -1,0 +1,10 @@
+name: Orbit Development Tools
+type: module
+description: Functionality for aiding in development of sites.
+core_version_requirement: ^11
+dependencies:
+  - devel:devel
+  - devel_generate:devel_generate
+  - stage_file_proxy:stage_file_proxy
+  - upgrade_status:upgrade_status
+package: Orbit
