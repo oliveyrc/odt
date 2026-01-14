@@ -7,4 +7,6 @@ dependencies:
   - devel_generate:devel_generate
   - stage_file_proxy:stage_file_proxy
   - upgrade_status:upgrade_status
+  - paragraphs:paragraphs
+  - field_group:field_group
 package: Orbit
